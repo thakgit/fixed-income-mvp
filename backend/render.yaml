@@ -1,0 +1,32 @@
+services:
+  - type: web
+    name: fixed-income-backend
+    env: python
+    plan: free
+    buildCommand: pip install -r requirements.txt
+    startCommand: uvicorn app.main:app --host 0.0.0.0 --port $PORT
+    envVars:
+      - key: PYTHON_VERSION
+        value: 3.11.0
+      - key: DATABASE_URL
+        value: postgresql://postgres:password@localhost:5432/fixed_income
+      - key: SECRET_KEY
+        generateValue: true
+      - key: ALGORITHM
+        value: HS256
+      - key: ACCESS_TOKEN_EXPIRE_MINUTES
+        value: 30
+      - key: OPENAI_API_KEY
+        sync: false
+      - key: PINECONE_API_KEY
+        sync: false
+      - key: PINECONE_ENVIRONMENT
+        sync: false
+      - key: PINECONE_INDEX_NAME
+        sync: false
+
+databases:
+  - name: fixed-income-db
+    plan: free
+    databaseName: fixed_income
+    user: postgres

@@ -1,0 +1,17 @@
+Try it locally
+
+Backend
+
+cd backend
+pip install -r requirements.txt
+uvicorn app.main:app --reload
+
+
+Frontend
+
+cd frontend
+npm i
+npm run dev
+
+
+If your API isn’t at http://localhost:8000, set VITE_API_BASE in frontend/.env.
