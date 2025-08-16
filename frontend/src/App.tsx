@@ -53,7 +53,7 @@ export default function App() {
                 </div>
                 <div className="flex items-center justify-center space-x-2 text-blue-200">
                   <Mail className="w-4 h-4" />
-                  <span>thakkar.rutvij.thakkar@gmail.com</span>
+                  <span>rutvij.thakkar@gmail.com</span>
                 </div>
               </div>
             </div>
