@@ -18,7 +18,6 @@ import {
   MapPin,
   Plus
 } from 'lucide-react';
-import { API_BASE } from '../lib/api';
 
 interface Loan {
   loan_id: string;
@@ -83,7 +82,7 @@ export default function LoansTable() {
         ...(searchQuery && { q: searchQuery })
       });
 
-      const response = await fetch(`${API_BASE}/api/loans/search?${params}`);
+      const response = await fetch(`/api/loans/search?${params}`);
       if (response.ok) {
         const data: LoanListResponse = await response.json();
         setLoans(data.items);
@@ -98,7 +97,7 @@ export default function LoansTable() {
 
   const handleRiskAssessment = async (loanId: string) => {
     try {
-      const response = await fetch(`${API_BASE}/api/risk/assess/${loanId}`, {
+      const response = await fetch(`/api/risk/assess/${loanId}`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({

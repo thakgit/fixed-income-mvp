@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { 
+import { API_BASE } from '../lib/api';
   Brain, 
   MessageSquare, 
   Send, 
@@ -15,7 +16,6 @@ import {
   Copy,
   RefreshCw
 } from 'lucide-react';
-import { API_BASE } from '../lib/api';
 
 interface AIResponse {
   query: string;

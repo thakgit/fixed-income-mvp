@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { 
+import { API_BASE } from '../lib/api';
   FileText, 
   Download, 
   Eye, 
@@ -13,7 +14,6 @@ import {
   Zap,
   Filter
 } from 'lucide-react';
-import { API_BASE } from '../lib/api';
 
 interface Document {
   doc_id: string;
@@ -65,7 +65,7 @@ export default function Documents() {
         ...(filters.processing_status && { processing_status: filters.processing_status })
       });
 
-      const response = await fetch(`${API_BASE}/api/documents?${params}`);
+      const response = await fetch(`/api/documents?${params}`);
       if (response.ok) {
         const data: DocumentListResponse = await response.json();
         setDocuments(data.items);
@@ -81,7 +81,7 @@ export default function Documents() {
   const handleExtractText = async (docId: string) => {
     setExtracting(docId);
     try {
-      const response = await fetch(`${API_BASE}/api/documents/${docId}/extract`, { method: 'POST' });
+      const response = await fetch(`/api/documents/${docId}/extract`, { method: 'POST' });
       if (response.ok) {
         await fetchDocuments(); // Refresh the list
       }
@@ -95,7 +95,7 @@ export default function Documents() {
   const handleIndexDocument = async (docId: string) => {
     setIndexing(docId);
     try {
-      const response = await fetch(`${API_BASE}/api/rag/index/${docId}`, { method: 'POST' });
+      const response = await fetch(`/api/rag/index/${docId}`, { method: 'POST' });
       if (response.ok) {
         await fetchDocuments(); // Refresh the list
       }

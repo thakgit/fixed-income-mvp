@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { 
+import { API_BASE } from '../lib/api';
   BarChart3, 
   TrendingUp, 
   AlertTriangle, 
@@ -18,7 +19,6 @@ import {
   Zap
 } from 'lucide-react';
 import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, PieChart, Pie, Cell } from 'recharts';
-import { API_BASE } from '../lib/api';
 
 interface PortfolioSummary {
   total: number;

@@ -1,5 +1,6 @@
 import React, { useState, useRef } from 'react';
 import { 
+import { API_BASE } from '../lib/api';
   Upload, 
   FileText, 
   FileSpreadsheet, 
@@ -16,7 +17,6 @@ import {
   Info,
   Eye
 } from 'lucide-react';
-import { API_BASE } from '../lib/api';
 
 interface UploadResult {
   doc_id: string;
@@ -119,7 +119,7 @@ export default function UploadCenter() {
           if (file.type === 'application/pdf') {
             setProcessingStatus(prev => ({ ...prev, [file.name]: 'extracting' }));
             try {
-              const extractResponse = await fetch(`${API_BASE}/api/documents/${result.doc_id}/extract`, {
+              const extractResponse = await fetch(`/api/documents/${result.doc_id}/extract`, {
                 method: 'POST'
               });
               if (extractResponse.ok) {
