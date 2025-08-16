@@ -39,12 +39,12 @@ export default function App() {
           </div>
           
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-8">
-            {/* Jayesh Thakkar */}
+            {/* Rutvij Thakkar */}
             <div className="text-center p-6 bg-gradient-to-r from-blue-600/20 to-cyan-600/20 rounded-2xl border border-blue-500/30 backdrop-blur-sm">
               <div className="w-20 h-20 bg-gradient-to-r from-blue-500 to-cyan-500 rounded-full flex items-center justify-center mx-auto mb-4 shadow-lg">
                 <Target className="w-10 h-10 text-white" />
               </div>
-              <h4 className="text-xl font-bold text-white mb-2">Jayesh Thakkar</h4>
+              <h4 className="text-xl font-bold text-white mb-2">Rutvij Thakkar</h4>
               <p className="text-blue-200 mb-3">Product Vision & Business Strategy</p>
               <div className="space-y-2 text-sm">
                 <div className="flex items-center justify-center space-x-2 text-gray-300">

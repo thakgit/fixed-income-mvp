@@ -177,5 +177,5 @@ This project is proprietary and confidential.
 ## 🆘 Support
 
 For support and questions, please contact:
-- **Jayesh Thakkar**: thakkar.jayesh@gmail.com
+- **Jayesh Thakkar**: 
 - **Project Repository**: [GitHub Issues](https://github.com/yourusername/fixed-income-mvp/issues)
