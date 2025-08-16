@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import { 
-import { API_BASE } from '../lib/api';
   BarChart3, 
   TrendingUp, 
   AlertTriangle, 
@@ -19,6 +18,7 @@ import { API_BASE } from '../lib/api';
   Zap
 } from 'lucide-react';
 import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, PieChart, Pie, Cell } from 'recharts';
+import { API_BASE } from '../lib/api';
 
 interface PortfolioSummary {
   total: number;
@@ -82,7 +82,7 @@ export default function PortfolioOverview() {
     
     setIsQuerying(true);
     try {
-      const response = await fetch('/api/rag/query', {
+      const response = await fetch(`${API_BASE}/api/rag/query`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ q: query, limit: 5 })

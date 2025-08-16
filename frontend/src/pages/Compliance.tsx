@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import { 
-import { API_BASE } from '../lib/api';
   Shield, 
   AlertTriangle, 
   CheckCircle, 
@@ -14,6 +13,7 @@ import { API_BASE } from '../lib/api';
   Filter,
   Download
 } from 'lucide-react';
+import { API_BASE } from '../lib/api';
 
 interface ComplianceFinding {
   loan_id: string;

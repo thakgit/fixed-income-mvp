@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import { 
-import { API_BASE } from '../lib/api';
   Brain, 
   MessageSquare, 
   Send, 
@@ -16,6 +15,7 @@ import { API_BASE } from '../lib/api';
   Copy,
   RefreshCw
 } from 'lucide-react';
+import { API_BASE } from '../lib/api';
 
 interface AIResponse {
   query: string;
@@ -71,7 +71,7 @@ export default function AIAssistant() {
     setIsProcessing(true);
 
     try {
-      const response = await fetch('/api/rag/query', {
+      const response = await fetch(`${API_BASE}/api/rag/query`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ q: query, limit: 5 })

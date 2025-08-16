@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import { 
-import { API_BASE } from '../lib/api';
   FileText, 
   AlertTriangle, 
   CheckCircle, 
@@ -19,6 +18,7 @@ import { API_BASE } from '../lib/api';
   MapPin,
   Plus
 } from 'lucide-react';
+import { API_BASE } from '../lib/api';
 
 interface Loan {
   loan_id: string;
@@ -98,7 +98,7 @@ export default function LoansTable() {
 
   const handleRiskAssessment = async (loanId: string) => {
     try {
-      const response = await fetch(`/api/risk/assess/${loanId}`, {
+      const response = await fetch(`${API_BASE}/api/risk/assess/${loanId}`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({

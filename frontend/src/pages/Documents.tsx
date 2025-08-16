@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import { 
-import { API_BASE } from '../lib/api';
   FileText, 
   Download, 
   Eye, 
@@ -14,6 +13,7 @@ import { API_BASE } from '../lib/api';
   Zap,
   Filter
 } from 'lucide-react';
+import { API_BASE } from '../lib/api';
 
 interface Document {
   doc_id: string;
@@ -81,7 +81,7 @@ export default function Documents() {
   const handleExtractText = async (docId: string) => {
     setExtracting(docId);
     try {
-      const response = await fetch(`/api/documents/${docId}/extract`, { method: 'POST' });
+      const response = await fetch(`${API_BASE}/api/documents/${docId}/extract`, { method: 'POST' });
       if (response.ok) {
         await fetchDocuments(); // Refresh the list
       }
@@ -95,7 +95,7 @@ export default function Documents() {
   const handleIndexDocument = async (docId: string) => {
     setIndexing(docId);
     try {
-      const response = await fetch(`/api/rag/index/${docId}`, { method: 'POST' });
+      const response = await fetch(`${API_BASE}/api/rag/index/${docId}`, { method: 'POST' });
       if (response.ok) {
         await fetchDocuments(); // Refresh the list
       }
@@ -110,7 +110,7 @@ export default function Documents() {
     if (!searchQuery.trim()) return;
     
     try {
-      const response = await fetch('/api/rag/query', {
+      const response = await fetch(`${API_BASE}/api/rag/query`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ q: searchQuery, limit: 10 })

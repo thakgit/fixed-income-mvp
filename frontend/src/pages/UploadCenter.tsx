@@ -1,6 +1,5 @@
 import React, { useState, useRef } from 'react';
 import { 
-import { API_BASE } from '../lib/api';
   Upload, 
   FileText, 
   FileSpreadsheet, 
@@ -17,6 +16,7 @@ import { API_BASE } from '../lib/api';
   Info,
   Eye
 } from 'lucide-react';
+import { API_BASE } from '../lib/api';
 
 interface UploadResult {
   doc_id: string;
@@ -105,7 +105,7 @@ export default function UploadCenter() {
       try {
         setProcessingStatus(prev => ({ ...prev, [file.name]: 'uploading' }));
         
-        const response = await fetch('/api/ingest/document', {
+        const response = await fetch(`${API_BASE}/api/ingest/document`, {
           method: 'POST',
           body: formData
         });
@@ -119,7 +119,7 @@ export default function UploadCenter() {
           if (file.type === 'application/pdf') {
             setProcessingStatus(prev => ({ ...prev, [file.name]: 'extracting' }));
             try {
-              const extractResponse = await fetch(`/api/documents/${result.doc_id}/extract`, {
+              const extractResponse = await fetch(`${API_BASE}/api/documents/${result.doc_id}/extract`, {
                 method: 'POST'
               });
               if (extractResponse.ok) {
@@ -156,7 +156,7 @@ export default function UploadCenter() {
       const formData = new FormData();
       formData.append('file', file);
       
-      const response = await fetch('/api/ingest/loans', {
+      const response = await fetch(`${API_BASE}/api/ingest/loans`, {
         method: 'POST',
         body: formData
       });
