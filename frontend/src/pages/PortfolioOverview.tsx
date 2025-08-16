@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import { 
-import { API_BASE } from '../lib/api';
   BarChart3, 
   TrendingUp, 
   AlertTriangle, 
@@ -57,8 +56,8 @@ export default function PortfolioOverview() {
   const fetchPortfolioData = async () => {
     try {
       const [summaryRes, analyticsRes] = await Promise.all([
-        fetch(`${API_BASE}/api/loans/summary`),
-        fetch(`${API_BASE}/api/portfolio/analytics`)
+        fetch('/api/loans/summary'),
+        fetch('/api/portfolio/analytics')
       ]);
       
       if (summaryRes.ok) {
@@ -82,7 +81,7 @@ export default function PortfolioOverview() {
     
     setIsQuerying(true);
     try {
-      const response = await fetch(`${API_BASE}/api/rag/query`, {
+      const response = await fetch('/api/rag/query', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ q: query, limit: 5 })

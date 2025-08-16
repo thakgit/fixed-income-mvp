@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import { 
-import { API_BASE } from '../lib/api';
   FileText, 
   Download, 
   Eye, 
@@ -110,7 +109,7 @@ export default function Documents() {
     if (!searchQuery.trim()) return;
     
     try {
-      const response = await fetch(`${API_BASE}/api/rag/query`, {
+      const response = await fetch('/api/rag/query', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ q: searchQuery, limit: 10 })

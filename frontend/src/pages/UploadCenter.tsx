@@ -1,6 +1,5 @@
 import React, { useState, useRef } from 'react';
 import { 
-import { API_BASE } from '../lib/api';
   Upload, 
   FileText, 
   FileSpreadsheet, 
@@ -105,7 +104,7 @@ export default function UploadCenter() {
       try {
         setProcessingStatus(prev => ({ ...prev, [file.name]: 'uploading' }));
         
-        const response = await fetch(`${API_BASE}/api/ingest/document`, {
+        const response = await fetch('/api/ingest/document', {
           method: 'POST',
           body: formData
         });
@@ -156,7 +155,7 @@ export default function UploadCenter() {
       const formData = new FormData();
       formData.append('file', file);
       
-      const response = await fetch(`${API_BASE}/api/ingest/loans`, {
+      const response = await fetch('/api/ingest/loans', {
         method: 'POST',
         body: formData
       });
