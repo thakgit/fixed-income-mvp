@@ -486,7 +486,7 @@ export default function PortfolioOverview() {
                 <p className="font-semibold text-blue-800">Rutvij Thakkar</p>
                 <p className="text-sm text-gray-600">Product Vision & Business Strategy</p>
                 <p className="text-sm text-gray-500">Frisco, TX, USA</p>
-                <p className="text-sm text-blue-600 font-medium">thakkar.jayesh@gmail.com</p>
+                <p className="text-sm text-blue-600 font-medium">rutvij.thakkar@gmail.com</p>
               </div>
             </div>
 
