@@ -1,7 +1,14 @@
-export const API_BASE = ''; // Using Vite proxy configuration
+export const API_BASE = (import.meta.env.VITE_API_URL || '').replace(/\/+$/,'');
+
+if (!API_BASE) {
+  // Helpful hint in dev if env is missing
+  // eslint-disable-next-line no-console
+  console.warn('VITE_API_URL is empty – set it in Netlify (or .env) and rebuild.');
+}
 
 async function req(path: string, opts: RequestInit = {}) {
-  const res = await fetch(`${API_BASE}${path}`, opts);
+  const url = `${API_BASE}${path.startsWith('/') ? path : `/${path}`}`;
+  const res = await fetch(url, opts);
   if (!res.ok) throw new Error(await res.text());
   return res;
 }
@@ -28,8 +35,9 @@ export async function loansSummary() {
 }
 
 export async function listDocuments(params: Record<string,string|number|boolean> = {}) {
-  const url = new URL(`${API_BASE}/api/documents`);
-  Object.entries(params).forEach(([k,v]) => url.searchParams.set(k, String(v)));
+  const qs = new URLSearchParams();
+  Object.entries(params).forEach(([k,v]) => qs.set(k, String(v)));
+  const url = `${API_BASE}/api/documents${qs.toString() ? `?${qs.toString()}` : ''}`;
   const res = await fetch(url);
   return res.json();
 }
@@ -64,10 +72,11 @@ export async function complianceMissing410A(page = 1) {
 }
 
 export async function searchLoans(q = '', page = 1) {
-  const url = new URL(`${API_BASE}/api/loans/search`);
-  url.searchParams.set('page', String(page));
-  url.searchParams.set('page_size', '20');
-  if (q) url.searchParams.set('q', q);
+  const qs = new URLSearchParams();
+  qs.set('page', String(page));
+  qs.set('page_size', '20');
+  if (q) qs.set('q', q);
+  const url = `${API_BASE}/api/loans/search?${qs.toString()}`;
   const res = await fetch(url);
   return res.json();
 }

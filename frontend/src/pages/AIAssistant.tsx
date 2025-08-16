@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { 
+import { API_BASE } from '../lib/api';
   Brain, 
   MessageSquare, 
   Send, 

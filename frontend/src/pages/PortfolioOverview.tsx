@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { 
+import { API_BASE } from '../lib/api';
   BarChart3, 
   TrendingUp, 
   AlertTriangle, 
@@ -56,8 +57,8 @@ export default function PortfolioOverview() {
   const fetchPortfolioData = async () => {
     try {
       const [summaryRes, analyticsRes] = await Promise.all([
-        fetch('/api/loans/summary'),
-        fetch('/api/portfolio/analytics')
+        fetch(`${API_BASE}/api/loans/summary`),
+        fetch(`${API_BASE}/api/portfolio/analytics`)
       ]);
       
       if (summaryRes.ok) {

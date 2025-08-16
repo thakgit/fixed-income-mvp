@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { 
+import { API_BASE } from '../lib/api';
   FileText, 
   AlertTriangle, 
   CheckCircle, 
@@ -82,7 +83,7 @@ export default function LoansTable() {
         ...(searchQuery && { q: searchQuery })
       });
 
-      const response = await fetch(`/api/loans/search?${params}`);
+      const response = await fetch(`${API_BASE}/api/loans/search?${params}`);
       if (response.ok) {
         const data: LoanListResponse = await response.json();
         setLoans(data.items);

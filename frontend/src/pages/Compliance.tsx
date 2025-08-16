@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { 
+import { API_BASE } from '../lib/api';
   Shield, 
   AlertTriangle, 
   CheckCircle, 
@@ -53,8 +54,8 @@ export default function Compliance() {
   const fetchComplianceData = async () => {
     try {
       const [findingsRes, rulesRes] = await Promise.all([
-        fetch('/api/compliance/findings/missing-410a'),
-        fetch('/api/compliance/rules')
+        fetch(`${API_BASE}/api/compliance/findings/missing-410a`),
+        fetch(`${API_BASE}/api/compliance/rules`)
       ]);
       
       if (findingsRes.ok) {
