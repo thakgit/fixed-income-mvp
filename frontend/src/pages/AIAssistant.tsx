@@ -365,7 +365,8 @@ export default function AIAssistant() {
                   onChange={(e) => setQuery(e.target.value)}
                   onKeyPress={handleKeyPress}
                   placeholder="Ask me about your portfolio, compliance, risk analysis, or any other questions..."
-                  className="input-modern w-full pl-4 pr-12 py-3 resize-none"
+                  className="input-modern w-full pl-4 pr-12 py-3 resize-none
+                   bg-white text-slate-900 placeholder-slate-500 caret-blue-600"
                   rows={3}
                   disabled={isProcessing}
                 />
