@@ -197,7 +197,7 @@ export default function Documents() {
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
               placeholder="Search: 'loans with missing 410A forms' or 'high-risk mortgages in California'..."
-              className="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent"
+              className="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent bg-white text-slate-900 placeholder-slate-500 caret-blue-600"
               onKeyPress={(e) => e.key === 'Enter' && handleSearch()}
             />
           </div>
